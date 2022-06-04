@@ -26,27 +26,38 @@
             </div>
         </nav>
         <!-- Header-->
+        <form method="post" action="/predict">
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
-                <h1 class="fw-bolder">Why Should We Hire You?</h1>
-                <p class="lead">A functional Bootstrap 5 boilerplate for one page scrolling websites</p>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type response here"></textarea>
-                <a class="btn btn-light btn-lg" href="#about">Evaluate!</a>
+               
+                    <h1 class="fw-bolder">Why Should We Hire You?</h1>
+                    <p class="lead">Type in your response and what answer you will recieve from the evaluaton</p>
+                   <input class="mywidth" type ="text" id="exampleFormControlTextarea1" rows="3" placeholder="Type response here" name ="response">
+                    <br>
+                    <input class="btn btn-light btn-lg mt-3" type="submit" href="#about" value="EVALUATE">
+              
             </div>
         </header>
+        </form>
         <!-- About section-->
         <section id="about">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
                         <h2>EVALUATION</h2>
-                        <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-                        <ul>
-                            <li>Clickable nav links that smooth scroll to page sections</li>
-                            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-                        </ul>
+                        <p class="lead">It will be shown in these section wether your response is decent to be valued as hired or not-hired</p>
+                        <div class="pt-3">
+                            <div class="text-center">
+                                <div class="container-fluid border bg-shadow p-5" >
+                                    <p class="font-weight-bold">"{{response}}"</p>
+                                    <h1 class="display-3">{{eval}}</h1>
+                                    <div class="container px-4">
+                                        <h3 class="pt-3">Score: {{score}}</h3>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                     
                     </div>
                 </div>
             </div>
@@ -56,8 +67,8 @@
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
-                        <h2>Services we offer</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+                        <h2>More about evaluator</h2>
+                        <p class="lead">This evaluator does not predict the whole outcome of an interview but to only to a certain question which is "Why should we hire you", and still does not mean to perfectly predict the hiring process because it has many factors and the evaluator still has more room for improvement</p>
                     </div>
                 </div>
             </div>
@@ -68,7 +79,7 @@
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
                         <h2>Contact us</h2>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+                        <p class="lead">CCS</p>
                     </div>
                 </div>
             </div>

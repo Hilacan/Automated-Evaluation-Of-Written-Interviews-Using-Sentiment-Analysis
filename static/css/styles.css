@@ -4809,6 +4809,14 @@ textarea.form-control-lg {
   border: 1px solid #dee2e6;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.mywidth{
+  width: 50em;
+  height: 5em;
+  font-family: Verdana;
+  font-size: 1em;
+  display: inline-block;
+  text-align: center;
+}
 @media (prefers-reduced-motion: reduce) {
   .page-link {
     transition: none;
@@ -5013,6 +5021,10 @@ textarea.form-control-lg {
   0% {
     background-position-x: 1rem;
   }
+}
+h3 {
+  background-color: #e0ebeb;
+
 }
 .progress {
   display: flex;

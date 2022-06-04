@@ -2,31 +2,36 @@ from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import numpy as np
-model = load_model('model/SA_LSTM.h5')
 
-model.summary()
-answer = [" During the initial interview, i can already tell this is the type of environment I'm excited to work in and thrive in in the long term. The opportunities to tackle different projects are what draw me since I’m inclined to be solution-oriented. The opportunities to expand in this field are something that cannot be grasp anywhere else.  It's challenging and never redundant. I'm thrilled by the idea of working on projects in an environment I'm quite familiar with and working with people i look up to. For me, this opportunity offers an environment for me to expand professionally."]
+model = load_model('model/A-model.h5')
 
-# def prediction(answer):
+ans = ["I want to work in CIT-University because I want to serve my alma mater as a return of gratitude to the institution; that I graduated or finished my education in CIT-University for 17 years, from elementary to college. If it wasn't for CIT-University, my siblings and I wouldn't have the opportunity to finish our education in a prestigious institution, where they offered privilege program for students whose parents' are employees of CIT-University, where my mother is also currently working as a teacher and where my grandfather was a former Registrar of High School Department."]
+def predict(response):
+    tokenizer = Tokenizer()
+    tokenizer.fit_on_texts(response)
+    sequenced = tokenizer.texts_to_sequences(response)
+    padded = pad_sequences(sequenced, maxlen=74, dtype='int32', value=0)
+    sentiment = model.predict(padded,batch_size=4,verbose = 2)[0]
+    for i in sentiment:
+       val = i
+    return val+.2
 
-#     tokenizer = Tokenizer()
-#     tokenizer.fit_on_texts(answer)
-#     sequenced = tokenizer.texts_to_sequences(answer)
-#     padded = pad_sequences(sequenced, maxlen=74, dtype='int32', value=0)
-#     sentiment = model.predict(padded,batch_size=1,verbose = 2)[0]
-#     eval = "NOT HIRED"
-#     if (np.argmax(sentiment) == 1):
-#         eval = "HIRED"
-#     return eval
+def label(val):
+    if val >= 0.5:
+        label = "Well Done! You have passed the evaluation!"
+    else:
+        label = "Unfortunately, you did not pass"
+    return label
+print(predict(ans))
+print(label(predict(ans)))
 
-tokenizer = Tokenizer()
-tokenizer.fit_on_texts(answer)
-sequenced = tokenizer.texts_to_sequences(answer)
-padded = pad_sequences(sequenced, maxlen=74, dtype='int32', value=0)
-sentiment = model.predict(padded,batch_size=1,verbose = 2)[0]
-eval = "NOT HIRED"
-if (np.argmax(sentiment) == 1):
-     eval = "HIRED"
+
+
+
+
+
+
+
 
 
 
