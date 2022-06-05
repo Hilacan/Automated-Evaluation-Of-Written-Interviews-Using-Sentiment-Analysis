@@ -3,8 +3,6 @@ from model import handler as h
 
 app = Flask(__name__)
 
-
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -13,10 +11,9 @@ def home():
 def result():
     if request.method == "POST":
         ans = request.form['response']
-        val = h.predict(ans)
-        print(val)
-        sentiment = h.label(h.predict(ans))
-        print(sentiment)
+        answer = [ans]
+        val = h.predict(answer)
+        sentiment = h.label(val)
     return render_template("index.html",eval = sentiment,response = ans,score = val)
 
 if __name__ == '__main__':

@@ -1,20 +1,25 @@
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-import numpy as np
 
-model = load_model('model/A-model.h5')
+model = load_model('model/model-c.h5')
+model1 = load_model('model/A-Model.h5')
 
-ans = ["I want to work in CIT-University because I want to serve my alma mater as a return of gratitude to the institution; that I graduated or finished my education in CIT-University for 17 years, from elementary to college. If it wasn't for CIT-University, my siblings and I wouldn't have the opportunity to finish our education in a prestigious institution, where they offered privilege program for students whose parents' are employees of CIT-University, where my mother is also currently working as a teacher and where my grandfather was a former Registrar of High School Department."]
+
+answer = "Ever since I was young it had always been my passion to teach and mold future"
+
+ans = [answer]
+
 def predict(response):
-    tokenizer = Tokenizer()
+    max_fatures = 500
+    tokenizer = Tokenizer(num_words=max_fatures, split=' ')
     tokenizer.fit_on_texts(response)
     sequenced = tokenizer.texts_to_sequences(response)
-    padded = pad_sequences(sequenced, maxlen=74, dtype='int32', value=0)
+    padded = pad_sequences(sequenced, maxlen=71, dtype='int32', value=0)
     sentiment = model.predict(padded,batch_size=4,verbose = 2)[0]
     for i in sentiment:
        val = i
-    return val+.2
+    return val
 
 def label(val):
     if val >= 0.5:
@@ -22,8 +27,10 @@ def label(val):
     else:
         label = "Unfortunately, you did not pass"
     return label
-print(predict(ans))
-print(label(predict(ans)))
+
+# a=predict(ans)
+# print(a)
+# print(label(a))
 
 
 
