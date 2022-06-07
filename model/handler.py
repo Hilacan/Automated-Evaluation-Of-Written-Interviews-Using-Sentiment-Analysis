@@ -19,10 +19,10 @@ def predict(response):
     sentiment = model.predict(padded,batch_size=4,verbose = 2)[0]
     for i in sentiment:
        val = i
-    return val
+    return val*100-35
 
 def label(val):
-    if val >= 0.5:
+    if val >= 50:
         label = "Well Done! You have passed the evaluation!"
     else:
         label = "Unfortunately, you did not pass"
